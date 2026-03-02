@@ -1,10 +1,9 @@
 "use client"
 import Image from 'next/image';
 import { useLoginHook } from './signinHook';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
-export default function SiginPage({  searchParams,
-}: {
+export default function SiginPage(props: {
   searchParams?: {
     callbackUrl?: string;
     verify?: string;
@@ -12,8 +11,7 @@ export default function SiginPage({  searchParams,
   };
 }) {
 
-  const callbackUrl = searchParams?.callbackUrl;
-
+  const callbackUrl = props.searchParams?.callbackUrl;
 
   const {
     email,

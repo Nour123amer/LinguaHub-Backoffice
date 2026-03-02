@@ -193,6 +193,7 @@ export const useLoginHook = () => {
         await new Promise(resolve => setTimeout(resolve, 200));
         
         // Redirect to the callback URL or default
+        console.log("Redirecting to:", redirectPath);
         navigate.push(redirectPath);
       } else {
         toast.error('Login failed. Please try again.');
