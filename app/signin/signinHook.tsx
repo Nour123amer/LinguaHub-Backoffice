@@ -167,7 +167,7 @@ export const useLoginHook = () => {
         // Create NextAuth session by calling signIn with user data
         // This will skip the login call in authorize since we pass accessToken and user
         const signInResult = await signIn('credentials', {
-          redirect: false,
+          redirect: true,
           email: email.trim(),
           password: password,
           // Pass user data to skip login call in authorize

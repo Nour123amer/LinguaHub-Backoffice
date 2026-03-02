@@ -26,7 +26,9 @@ console.log("Proxy running:", pathname)
     pathname.startsWith("/dashboard") ||
     pathname.startsWith("/users");
 
-  const token = req.cookies.get("next-auth.session-token")?.value;
+  const token = req.cookies.get("next-auth.session-token")?.value || 
+              req.cookies.get("__Secure-next-auth.session-token")?.value;
+              
   console.log("token",token)
   console.log("cookies",req.cookies.getAll())
 
