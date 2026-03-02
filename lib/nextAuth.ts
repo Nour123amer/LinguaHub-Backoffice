@@ -4,7 +4,7 @@ import NextAuth, { AuthOptions } from "next-auth";
 import { graphqlServerClient } from "./graphql-server-client";
 
 // Default redirect URL after successful login
-export const DEFAULT_AFTER_LOGIN_REDIRECT = process.env.NEXT_PUBLIC_AFTER_LOGIN_REDIRECT || '/dashboard';
+export const DEFAULT_AFTER_LOGIN_REDIRECT = '/dashboard';
 
 export const authOptions: AuthOptions = {
     pages: {

@@ -1,7 +1,7 @@
 "use client"
 import { UpdateUserDocument, UserDocument, UsersDocument } from '@/graphql/generated/graphql';
 import { useMutation, useQuery } from '@apollo/client/react';
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { FaPencilAlt } from 'react-icons/fa';
 import { MdDeleteForever, MdRemoveRedEye } from 'react-icons/md';
 import {
@@ -159,6 +159,7 @@ export default function page() {
       </div>
 
       {/* users */}
+      <Suspense fallback={<div>Loading...</div>}>
       <div className="w-full bg-gray-50 rounded-2xl shadow-lg shadow-blue-100/40 overflow-hidden">
 
         <table className="w-full text-left border-collapse">
@@ -285,6 +286,7 @@ export default function page() {
         </table>
 
       </div>
+      </Suspense>
     </div>
   );
 

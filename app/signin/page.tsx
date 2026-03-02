@@ -93,7 +93,7 @@ export default function SiginPage({  searchParams,
           </div>
 
           {/* Button */}
-          <button className="w-full py-3 rounded-lg text-white font-medium bg-linear-to-r from-indigo-600 to-purple-600 hover:opacity-90 transition">
+          <button className="w-full py-3 rounded-lg cursor-pointer text-white font-medium bg-linear-to-r from-indigo-600 to-purple-600 hover:opacity-90 transition">
             Sign in
           </button>
         </form>
