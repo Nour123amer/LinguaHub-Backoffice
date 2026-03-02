@@ -1,0 +1,18 @@
+query GetMyUserInfo {
+  getMyUserInfo {
+    id
+    email
+    firstName
+    lastName
+    age
+    bio
+    createdAt
+    gender
+    isVerified
+    education
+    profilePicture
+    roles
+    phone
+    updatedAt
+  }
+}

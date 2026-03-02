@@ -1,0 +1,15 @@
+mutation GoogleSignIn($input: GoogleSignInInput!) {
+  googleSignIn(input: $input) {
+    accessToken
+    user {
+      id
+      email
+      firstName
+      lastName
+      roles
+      isVerified
+      createdAt
+    }
+  }
+}
+

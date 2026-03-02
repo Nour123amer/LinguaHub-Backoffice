@@ -1,0 +1,40 @@
+mutation JoinAsInstructor {
+  joinAsInstructor {
+    id
+    email
+    firstName
+    lastName
+    roles
+    instructorInfo {
+      jobTitle
+      interests
+      socialLinks {
+        website
+        facebook
+        twitter
+        youtube
+        instagram
+        whatsapp
+      }
+      experience {
+        title
+        company
+        description
+        startDate
+        endDate
+        current
+      }
+      teachesLanguages {
+        language
+        isNative
+        score
+      }
+      speaks {
+        language
+        isNative
+        score
+      }
+    }
+  }
+}
+

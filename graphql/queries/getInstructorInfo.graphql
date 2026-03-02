@@ -1,0 +1,25 @@
+query GetInstructorInfo {
+  instructorInfo {
+    jobTitle
+    interests
+    experience {
+      title
+      company
+      description
+      startDate
+      endDate
+      current
+    }
+    teachesLanguages {
+      language
+      isNative
+      score
+    }
+    speaks {
+      language
+      isNative
+      score
+    }
+  }
+}
+

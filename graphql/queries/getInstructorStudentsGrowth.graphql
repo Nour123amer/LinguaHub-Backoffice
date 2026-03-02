@@ -1,0 +1,17 @@
+query GetInstructorStudentsGrowth(
+  $instructorId: ID
+  $instructorSlug: String
+) {
+  instructorAnalytics(
+    instructorId: $instructorId
+    instructorSlug: $instructorSlug
+  ) {
+    studentsGrowth {
+      month
+      students
+      enrollments
+      growthRate
+    }
+  }
+}
+

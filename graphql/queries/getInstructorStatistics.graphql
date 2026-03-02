@@ -1,0 +1,15 @@
+query GetInstructorStatistics(
+  $instructorId: ID
+  $instructorSlug: String
+) {
+  instructorAnalytics(
+    instructorId: $instructorId
+    instructorSlug: $instructorSlug
+  ) {
+    totalCourses
+    totalStudents
+    totalPageViews
+    totalCourseViews
+  }
+}
+

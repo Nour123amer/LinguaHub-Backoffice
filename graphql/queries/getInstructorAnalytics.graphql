@@ -1,0 +1,48 @@
+query GetInstructorAnalytics($instructorSlug: String!) {
+  instructorAnalytics(instructorSlug: $instructorSlug) {
+    instructorId
+    # Most Popular (views + enrollments) - NOW PAGINATED
+    mostPopularCourses(page: 1, first: 4) {
+      nodes {
+        course {
+          id
+          title
+          description
+          slug
+          price
+          image
+        }
+        enrollmentCount
+        viewCount
+        popularityScore
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+    # Most Performed (enrollments only) - ALSO PAGINATED
+    mostPerformingCourses(page: 1, first: 4) {
+      nodes {
+        course {
+          id
+          title
+          description
+          slug
+          price
+          image
+        }
+        enrollmentCount
+        viewCount
+        performanceScore
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}
+

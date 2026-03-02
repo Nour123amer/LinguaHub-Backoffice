@@ -1,0 +1,32 @@
+query GetInstructorRecentActivity(
+  $instructorId: ID
+  $instructorSlug: String
+) {
+  instructorAnalytics(
+    instructorId: $instructorId
+    instructorSlug: $instructorSlug
+  ) {
+    recentActivity {
+      nodes {
+        type
+        description
+        courseId
+        userId
+        createdAt
+        user {
+          firstName
+          lastName
+        }
+        course {
+          title
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}
+

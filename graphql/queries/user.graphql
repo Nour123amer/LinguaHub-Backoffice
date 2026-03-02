@@ -1,0 +1,18 @@
+query user($id:ID!){
+    user(id:$id){
+        age
+        createdAt
+        email
+        education
+        firstName
+        gender
+        id
+        isVerified
+        lastName
+        phone
+        profilePicture
+        registrationStrategy
+        roles
+        updatedAt 
+    }
+}
