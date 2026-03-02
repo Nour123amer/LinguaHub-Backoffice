@@ -17,8 +17,10 @@ import { RefreshTokenDocument, RefreshTokenMutation } from "@/graphql/generated/
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
-
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_GRAPHQL_URL || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
+const isServer = typeof window === "undefined";
+const GRAPHQL_ENDPOINT = isServer
+  ? `${process.env.NEXT_PUBLIC_GRAPHQL_URL}/api/graphql-proxy`
+  : "/api/graphql-proxy";
 const FALLBACK_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 const SIGN_IN_URL = '/signin';
 const TOKEN_STORAGE_KEY = 'accessToken';
