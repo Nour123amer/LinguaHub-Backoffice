@@ -220,9 +220,9 @@ export const authOptions: AuthOptions = {
             }
             
             // Store access token in localStorage for Apollo client (client-side only)
-            if (typeof window !== 'undefined' && token.accessToken) {
-                localStorage.setItem('accessToken', token.accessToken as string);
-            }
+            // if (typeof window !== 'undefined' && token.accessToken) {
+            //     localStorage.setItem('accessToken', token.accessToken as string);
+            // }
             
             return token;
         },
@@ -231,15 +231,18 @@ export const authOptions: AuthOptions = {
                 session.user.id = token.id as string;
                 session.user.email = token.email as string;
                 session.user.name = token.name as string;
-                // (session as any).accessToken = token.accessToken as string;
-                // (session as any).roles = token.roles as string[];
-                session.accessToken = token.accessToken as string;
-session.roles = token.roles as string[];
+            if (token.accessToken) {
+  session.accessToken = token.accessToken as string;
+}
+
+if (token.roles) {
+  session.roles = token.roles as string[];
+}
                 
                 // Keep localStorage in sync (client-side only)
-                if (typeof window !== 'undefined' && token.accessToken) {
-                    localStorage.setItem('accessToken', token.accessToken as string);
-                }
+                // if (typeof window !== 'undefined' && token.accessToken) {
+                //     localStorage.setItem('accessToken', token.accessToken as string);
+                // }
             }
             return session;
         }
