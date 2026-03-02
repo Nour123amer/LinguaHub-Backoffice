@@ -1,8 +1,16 @@
 import { GraphQLClient } from 'graphql-request';
 import { getSdk } from '@/graphql/generated/server';
 
-const graphqlUrl = process.env.NEXT_PUBLIC_GRAPHQL_URL || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
+const baseUrl =
+  typeof window === "undefined"
+    ? process.env.NEXT_PUBLIC_APP_URL
+    : "";
 
+const graphqlUrl =
+  typeof window === "undefined"
+    ? `${baseUrl}/api/graphql`
+    : "/api/graphql";
+    
 if (!graphqlUrl) {
   throw new Error('GraphQL URL is not configured');
 }
