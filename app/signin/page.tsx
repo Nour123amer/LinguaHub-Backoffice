@@ -1,7 +1,8 @@
 "use client"
 import Image from 'next/image';
 import { useLoginHook } from './signinHook';
-import { use, useState } from 'react';
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function SiginPage(props: {
   searchParams?: {
@@ -71,14 +72,16 @@ export default function SiginPage(props: {
             </label>
             <div className="relative">
               <input
-                type="password"
+                type={`${showPassword ? "text":"password"}`}
                 value={password}
                 placeholder="Enter your password"
                 onChange={handlePasswordChange}
                 className="w-full px-4 py-3 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-12"
               />
-              <span className="absolute inset-y-0 right-4 flex items-center text-gray-400 cursor-pointer">
-                👁
+              <span
+              onClick={()=>{setShowPassword(!showPassword)}}
+              className="absolute inset-y-0 right-4 flex items-center text-gray-400 cursor-pointer">
+              {showPassword? <Eye /> : <EyeOff /> } 
               </span>
             </div>
           </div>
