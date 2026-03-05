@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useSession } from "next-auth/react"
 import { useEffect } from "react"
 import { setAccessToken } from "./apollo-client"
