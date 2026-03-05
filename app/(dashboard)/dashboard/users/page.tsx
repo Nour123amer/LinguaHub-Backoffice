@@ -12,10 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import AddUserPopup from './AddUserPopup';
+import AddUserPopup from './components/AddUserPopup';
 import { useSession } from 'next-auth/react';
-import UserPopup from './UserInfo';
-import EditRolePopup from './EditRolePopup';
+import UserPopup from './components/UserInfo';
+import EditRolePopup from './components/EditRolePopup';
 
 export default function page() {
   const { data } = useQuery(UsersDocument);
@@ -207,7 +207,7 @@ export default function page() {
                         setId(user.id);
                         setIsEyeClicked(true);
                       }}
-                      className="group relative flex items-center justify-center 
+                      className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-blue-50 text-blue-600
                  hover:bg-blue-600 hover:text-white
@@ -227,7 +227,7 @@ export default function page() {
                     </button>
 
                     <button
-                      className="group relative flex items-center justify-center 
+                      className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-green-50 text-green-600
                  hover:bg-green-600 hover:text-white
@@ -257,7 +257,7 @@ export default function page() {
                     </button>
 
                     <button
-                      className="group relative flex items-center justify-center 
+                      className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-red-50 text-red-600
                  hover:bg-red-600 hover:text-white

@@ -1,5 +1,5 @@
-import DashboardHeader from "@/components/DashboardHeader";
-import DashboardSideBar from "@/components/DashboardSideBar";
+import DashboardHeader from "@/app/(dashboard)/components/DashboardHeader";
+import DashboardSideBar from "@/app/(dashboard)/components/DashboardSideBar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 

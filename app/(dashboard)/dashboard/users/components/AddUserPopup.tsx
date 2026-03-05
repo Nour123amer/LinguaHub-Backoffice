@@ -22,7 +22,7 @@ export default function AddUserPopup({onClose}:Props) {
 
           <button
           onClick={()=>{onClose()}}
-          className="text-gray-400 hover:text-gray-600 transition">
+          className="text-gray-400 hover:text-gray-600 transition cursor-pointer">
             ✕
           </button>
         </div>

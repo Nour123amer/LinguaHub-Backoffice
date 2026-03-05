@@ -20,7 +20,7 @@ export default function EditRolePopup({ role, onClose,setRole,handleEditRole }: 
 
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-black"
+          className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer"
         >
           <X size={20} />
         </button>
@@ -34,7 +34,7 @@ export default function EditRolePopup({ role, onClose,setRole,handleEditRole }: 
 
         <Button
         onClick={handleEditRole}
-        className="bg-[#9ECC46] text-white cursor-pointer"> Edit Role</Button>
+        className="bg-[#9ECC46] hover:bg-[#185E99] text-white cursor-pointer"> Edit Role</Button>
       </div>
     </div>
   );

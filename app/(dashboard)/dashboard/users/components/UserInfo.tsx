@@ -20,7 +20,7 @@ export default function UserPopup({ user, onClose }: Props) {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-black"
+          className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer"
         >
           <X size={20} />
         </button>

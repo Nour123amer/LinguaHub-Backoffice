@@ -63,13 +63,13 @@ export default function DashboardHeader() {
           group
           "
         >
-          <Bell size={20} className="text-gray-600 group-hover:text-[#185E99] transition-colors" />
+          <Bell size={20} className="text-gray-600 cursor-pointer group-hover:text-[#185E99] transition-colors" />
           <span
             className="
             absolute -top-1 -right-1
             bg-[#9ECC46] text-white text-[10px]
             w-5 h-5 flex items-center justify-center
-            rounded-full font-semibold shadow-md
+            rounded-full font-semibold shadow-md 
             "
           >
             3
