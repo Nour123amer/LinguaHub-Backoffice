@@ -1,7 +1,7 @@
 "use client"
 import { UpdateUserDocument, UserDocument, UsersDocument } from '@/graphql/generated/graphql';
 import { useMutation, useQuery } from '@apollo/client/react';
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { FaPencilAlt } from 'react-icons/fa';
 import { MdDeleteForever, MdRemoveRedEye } from 'react-icons/md';
 import {
@@ -18,7 +18,7 @@ import UserPopup from './components/UserInfo';
 import EditRolePopup from './components/EditRolePopup';
 
 export default function page() {
-  const { data } = useQuery(UsersDocument);
+  const { data, loading } = useQuery(UsersDocument);
   const [filter, setFiltered] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -159,8 +159,9 @@ export default function page() {
       </div>
 
       {/* users */}
-      <Suspense fallback={<div>Loading...</div>}>
       <div className="w-full bg-gray-50 rounded-2xl shadow-lg shadow-blue-100/40 overflow-hidden">
+
+
 
         <table className="w-full text-left border-collapse">
 
@@ -175,39 +176,47 @@ export default function page() {
           </thead>
 
           <tbody className="text-sm text-gray-700">
+            {loading && (
+              <tr>
+                <td colSpan={5} className="text-center py-10 text-gray-500">
+                  Loading users...
+                </td>
+              </tr>
+            )}
 
-            {filteredUsers && filteredUsers.map((user) =>
-              <tr key={user.id} className="border-b border-gray-100 hover:bg-blue-50 transition-all duration-200">
-                <td className="px-6 py-5 font-medium">
-                  {user.email}
-                </td>
-                <td className="px-6 py-5 text-gray-500">
-                  {user.phone}
-                </td>
-                <td className="px-6 py-5">
-                  <span className="px-3 py-1 text-xs font-medium rounded-full 
+            {!loading && filteredUsers &&
+              filteredUsers.map((user) =>
+                <tr key={user.id} className="border-b border-gray-100 hover:bg-blue-50 transition-all duration-200">
+                  <td className="px-6 py-5 font-medium">
+                    {user.email}
+                  </td>
+                  <td className="px-6 py-5 text-gray-500">
+                    {user.phone}
+                  </td>
+                  <td className="px-6 py-5">
+                    <span className="px-3 py-1 text-xs font-medium rounded-full 
                                  bg-blue-100 text-blue-700 border border-blue-200">
-                    {user.roles.join(",")}
-                  </span>
-                </td>
-                <td className="px-6 py-5">
-                  <span className="flex items-center gap-2 px-3 py-1 text-xs 
+                      {user.roles.join(",")}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5">
+                    <span className="flex items-center gap-2 px-3 py-1 text-xs 
                                  font-medium rounded-full bg-green-100 
                                  text-green-700 border border-green-200 w-fit">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    {user.isVerified ? "active" : "inactive"}
-                  </span>
-                </td>
-                <td className="px-6 py-5">
-                  <div className="flex gap-3">
+                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                      {user.isVerified ? "active" : "inactive"}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5">
+                    <div className="flex gap-3">
 
-                    {/* View */}
-                    <button
-                      onClick={() => {
-                        setId(user.id);
-                        setIsEyeClicked(true);
-                      }}
-                      className="group relative flex items-center justify-center cursor-pointer
+                      {/* View */}
+                      <button
+                        onClick={() => {
+                          setId(user.id);
+                          setIsEyeClicked(true);
+                        }}
+                        className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-blue-50 text-blue-600
                  hover:bg-blue-600 hover:text-white
@@ -215,19 +224,19 @@ export default function page() {
                  transition-all duration-300 ease-in-out
                  active:scale-90 focus:outline-none 
                  focus:ring-2 focus:ring-blue-400"
-                    >
-                      <MdRemoveRedEye size={18} />
+                      >
+                        <MdRemoveRedEye size={18} />
 
-                      <span className="absolute -top-9 scale-0 group-hover:scale-100 
+                        <span className="absolute -top-9 scale-0 group-hover:scale-100 
                        transition-transform duration-200 
                        bg-black text-white text-xs px-2 py-1 
                        rounded-md whitespace-nowrap">
-                        View User
-                      </span>
-                    </button>
+                          View User
+                        </span>
+                      </button>
 
-                    <button
-                      className="group relative flex items-center justify-center cursor-pointer
+                      <button
+                        className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-green-50 text-green-600
                  hover:bg-green-600 hover:text-white
@@ -236,28 +245,28 @@ export default function page() {
                  active:scale-90 focus:outline-none 
                  focus:ring-2 focus:ring-green-400"
 
-                      onClick={() => {
-                        setIsEditClicked(true)
-                        setId(user.id)
-                        setRole(user.roles?.[0] ?? "")
-                      }}
+                        onClick={() => {
+                          setIsEditClicked(true)
+                          setId(user.id)
+                          setRole(user.roles?.[0] ?? "")
+                        }}
 
 
-                    >
-                      <FaPencilAlt size={16} />
+                      >
+                        <FaPencilAlt size={16} />
 
-                      <span className="absolute -top-9 scale-0 group-hover:scale-100 
+                        <span className="absolute -top-9 scale-0 group-hover:scale-100 
                        transition-transform duration-200 
                        bg-black text-white text-xs px-2 py-1 
                        rounded-md whitespace-nowrap"
 
-                      >
-                        Edit User
-                      </span>
-                    </button>
+                        >
+                          Edit User
+                        </span>
+                      </button>
 
-                    <button
-                      className="group relative flex items-center justify-center cursor-pointer
+                      <button
+                        className="group relative flex items-center justify-center cursor-pointer
                  w-10 h-10 rounded-xl 
                  bg-red-50 text-red-600
                  hover:bg-red-600 hover:text-white
@@ -265,28 +274,27 @@ export default function page() {
                  transition-all duration-300 ease-in-out
                  active:scale-90 focus:outline-none 
                  focus:ring-2 focus:ring-red-400"
-                    >
-                      <MdDeleteForever size={20} />
+                      >
+                        <MdDeleteForever size={20} />
 
-                      <span className="absolute -top-9 scale-0 group-hover:scale-100 
+                        <span className="absolute -top-9 scale-0 group-hover:scale-100 
                        transition-transform duration-200 
                        bg-black text-white text-xs px-2 py-1 
                        rounded-md whitespace-nowrap">
-                        Delete User
-                      </span>
-                    </button>
+                          Delete User
+                        </span>
+                      </button>
 
-                  </div>
-                </td>
-              </tr>
-            )}
+                    </div>
+                  </td>
+                </tr>
+              )}
 
 
           </tbody>
         </table>
 
       </div>
-      </Suspense>
     </div>
   );
 

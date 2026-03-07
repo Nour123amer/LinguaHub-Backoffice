@@ -1,5 +1,4 @@
 const GRAPHQL_URL = "https://api.linguahub.net/graphql";
-
 //       POST HANDLER
 export async function POST(req: Request) {
   const body = await req.json();
@@ -17,10 +16,12 @@ export async function POST(req: Request) {
   });
 
   const data = await res.text();
-  return new Response(data, { status: res.status, headers: {
+  return new Response(data, { status: res.status, 
+    headers: {
       "Content-Type": "application/json",
     } });
 }
+
 
 //       GET HANDLER
 export async function GET(req: Request) {
